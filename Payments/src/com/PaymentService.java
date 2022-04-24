@@ -37,10 +37,11 @@ public class PaymentService {
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Produces(MediaType.TEXT_PLAIN)
 	public String insertPayment(@FormParam("PaymentDate") String PaymentDate,
-			@FormParam("Number") String Number, 
+			@FormParam("CustomerName") String CustomerName, 
+			@FormParam("AccountNo") String AccountNo, 
 			@FormParam("PaymentType") String PaymentType,
 			@FormParam("Amount") String Amount){
-		String output = paymentObj.insertPayment(PaymentDate, Number, PaymentType, Amount);
+		String output = paymentObj.insertPayment(PaymentDate, CustomerName, AccountNo, PaymentType, Amount);
 		return output;
 	}
 
@@ -54,10 +55,11 @@ public class PaymentService {
 		// Read the values from the JSON object
 		String PaymentID = paymentObject.get("PaymentID").getAsString();
 		String PaymentDate = paymentObject.get("PaymentDate").getAsString();
-		String Number = paymentObject.get("Number").getAsString();
+		String CustomerName = paymentObject.get("CustomerName").getAsString();
+		String AccountNo = paymentObject.get("AccountNo").getAsString();
 		String PaymentType = paymentObject.get("PaymentType").getAsString();
 		String Amount = paymentObject.get("Amount").getAsString();
-		String output = paymentObj.updatePayment(PaymentID, PaymentDate, Number, PaymentType, Amount);
+		String output = paymentObj.updatePayment(PaymentID, PaymentDate, CustomerName, AccountNo, PaymentType, Amount);
 		return output;
 	}
 

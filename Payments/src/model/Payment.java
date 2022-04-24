@@ -26,7 +26,7 @@ public class Payment {
 	}
 
 	// insert method
-	public String insertPayment(String date, String number, String type, String amount) {
+	public String insertPayment(String date, String no, String name, String type, String amount) {
 		Connection con = connect();
 		String output = "";
 		if (con == null) {
@@ -35,7 +35,7 @@ public class Payment {
 		}
 
 		// create a prepared statement
-		String query = " insert into payments (`PaymentID`,`PaymentDate`,`Number`,`PaymentType`,`Amount`)"
+		String query = " insert into payments (`PaymentID`,`PaymentDate`,`AccountNo`,`PaymentType`,`Amount`)"
 				+ " values (?, ?, ?, ?, ?)";
 
 		PreparedStatement preparedStmt;
@@ -44,9 +44,10 @@ public class Payment {
 
 			preparedStmt.setInt(1, 0);
 			preparedStmt.setString(2, date);
-			preparedStmt.setString(3, number);
-			preparedStmt.setString(4, type);
-			preparedStmt.setString(5, amount);
+			preparedStmt.setString(3, name);
+			preparedStmt.setString(4, no);
+			preparedStmt.setString(5, type);
+			preparedStmt.setString(6, amount);
 
 			preparedStmt.execute();
 			con.close();
@@ -68,7 +69,7 @@ public class Payment {
 				return "Error while connecting to the database for reading.";
 			}
 			// Prepare the html table to be displayed
-			output = "<table border='1'><tr><th>Payment Date</th><th>Number</th>" + "<th>Payment Type</th>"+ "<th>Amount</th></tr>" ;
+			output = "<table border='1'><tr><th>Payment Date</th><th>CustomerName</th>"+"<th>AccountNo</th>" + "<th>Payment Type</th>"+ "<th>Amount</th></tr>" ;
 
 			String query = "select * from payments";
 			Statement stmt = con.createStatement();
@@ -77,13 +78,15 @@ public class Payment {
 			while (rs.next()) {
 				String PaymentID = Integer.toString(rs.getInt("PaymentID"));
 				String PaymentDate = rs.getString("PaymentDate");
-				String Number = rs.getString("Number");
+				String CustomerName = rs.getString("CustomerName");
+				String AccountNo = rs.getString("AccountNo");
 				String PaymentType = rs.getString("PaymentType");
 				String Amount = rs.getString("Amount");
 
 				// Add into the html table
 				output += "<tr><td>" + PaymentDate + "</td>";
-				output += "<td>" + Number + "</td>";
+				output += "<td>" + CustomerName + "</td>";
+				output += "<td>" + AccountNo + "</td>";
 				output += "<td>" + PaymentType + "</td>";
 				output += "<td>" + Amount + "</td>";
 
@@ -100,7 +103,7 @@ public class Payment {
 	}
 
 	// update method
-	public String updatePayment(String ID, String date, String number, String type, String amount)
+	public String updatePayment(String ID, String date, String name, String no, String type, String amount)
 
 	{
 		String output = "";
@@ -110,16 +113,17 @@ public class Payment {
 				return "Error while connecting to the database for updating.";
 			}
 
-			String query = " update payments set PaymentDate= ? , Number = ?  , PaymentType = ? , Amount = ? where PaymentID = ? ";
+			String query = " update payments set PaymentDate= ? , CustomerName = ? , AccountNo = ?  , PaymentType = ? , Amount = ? where PaymentID = ? ";
 
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 
 			// binding values
 			preparedStmt.setString(1, date);
-			preparedStmt.setString(2, number);
-			preparedStmt.setString(3, type);
-			preparedStmt.setString(4, amount);
-			preparedStmt.setInt(5, Integer.parseInt(ID));
+			preparedStmt.setString(2, name);
+			preparedStmt.setString(3, no);
+			preparedStmt.setString(4, type);
+			preparedStmt.setString(5, amount);
+			preparedStmt.setInt(6, Integer.parseInt(ID));
 
 			// execute the statement
 			preparedStmt.execute();
