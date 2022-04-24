@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
-  <display-name>Payments</display-name>
+ <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>GadgetBadget</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -10,8 +10,19 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
+    
   <servlet>
-   <servlet-name>Jersey Web Application Payment</servlet-name>
+ <servlet-name>Jersey Web Application</servlet-name>
+ <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+ <load-on-startup>1</load-on-startup>
+</servlet>
+<servlet-mapping>
+ <servlet-name>Jersey Web Application</servlet-name>
+ <url-pattern>/CustomerService/*</url-pattern>
+</servlet-mapping>
+  
+  <servlet>
+ <servlet-name>Jersey Web Application Payment</servlet-name>
  <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
  <load-on-startup>1</load-on-startup>
 </servlet>
@@ -19,4 +30,54 @@
  <servlet-name>Jersey Web Application Payment</servlet-name>
  <url-pattern>/PaymentService/*</url-pattern>
 </servlet-mapping>
+  
+  
+    <servlet>
+ <servlet-name>Jersey Web Application funder</servlet-name>
+ <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+ <load-on-startup>1</load-on-startup>
+</servlet>
+<servlet-mapping>
+ <servlet-name>Jersey Web Application funder</servlet-name>
+ <url-pattern>/FunderService/*</url-pattern>
+</servlet-mapping>
+
+
+
+  
+   <servlet>
+ <servlet-name>Jersey Web Application approve</servlet-name>
+ <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+ <load-on-startup>1</load-on-startup>
+</servlet>
+<servlet-mapping>
+ <servlet-name>Jersey Web Application approve</servlet-name>
+ <url-pattern>/ApprovementService/*</url-pattern>
+</servlet-mapping>
+
+
+ 
+   <servlet>
+ <servlet-name>Jersey Web Application inventor</servlet-name>
+ <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+ <load-on-startup>1</load-on-startup>
+</servlet>
+<servlet-mapping>
+ <servlet-name>Jersey Web Application inventor</servlet-name>
+ <url-pattern>/InventorService/*</url-pattern>
+</servlet-mapping>
+
+
+
+   <servlet>
+ <servlet-name>Jersey Web Application product</servlet-name>
+ <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+ <load-on-startup>1</load-on-startup>
+</servlet>
+<servlet-mapping>
+ <servlet-name>Jersey Web Application product</servlet-name>
+ <url-pattern>/ProductService/*</url-pattern>
+</servlet-mapping>
+  
+  
 </web-app>

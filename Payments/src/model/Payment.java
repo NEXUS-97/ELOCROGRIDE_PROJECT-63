@@ -69,7 +69,7 @@ public class Payment {
 				return "Error while connecting to the database for reading.";
 			}
 			// Prepare the html table to be displayed
-			output = "<table border='1'><tr><th>Payment Date</th><th>CustomerName</th>"+"<th>AccountNo</th>" + "<th>Payment Type</th>"+ "<th>Amount</th></tr>" ;
+			output = "<table border='1'><tr><th>Payment ID</th><th>Payment Date</th><th>CustomerName</th><th>AccountNo</th>" + "<th>Payment Type</th>"+ "<th>Amount</th></tr>" ;
 
 			String query = "select * from payments";
 			Statement stmt = con.createStatement();
@@ -84,7 +84,8 @@ public class Payment {
 				String Amount = rs.getString("Amount");
 
 				// Add into the html table
-				output += "<tr><td>" + PaymentDate + "</td>";
+				output += "<tr><td>" + PaymentID + "</td>";
+				output += "<td>" + PaymentDate + "</td>";
 				output += "<td>" + CustomerName + "</td>";
 				output += "<td>" + AccountNo + "</td>";
 				output += "<td>" + PaymentType + "</td>";
