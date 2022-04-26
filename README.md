@@ -33,6 +33,7 @@ Finance manager can add, delete, update and remove payment details from system.
 
 Member
 IT20160098-B.A.D.A.Sathsarani
+
 IT20143190-De Silva P.H.S.Y.
 IT20142582-B.G.M.S Thilakawardhana 
 IT20154394-U.G.H.T.Kumara
