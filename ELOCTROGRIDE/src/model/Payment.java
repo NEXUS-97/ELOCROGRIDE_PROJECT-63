@@ -14,6 +14,7 @@ public class Payment {
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
+
 			con = DriverManager.getConnection(
 					"jdbc:mysql://localhost:3306/power?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
 					"root", "");
@@ -27,7 +28,7 @@ public class Payment {
 	}
 
 	// insert method
-	public String insertPayment(String date, String no, String name, String type, String amount) {
+	public String insertPayment(String date, String name, String no, String type, String amount) {
 		Connection con = connect();
 		String output = "";
 		if (con == null) {
@@ -36,8 +37,8 @@ public class Payment {
 		}
 
 		// create a prepared statement
-		String query = " insert into payments (`PaymentID`,`PaymentDate`,`AccountNo`,`PaymentType`,`Amount`)"
-				+ " values (?, ?, ?, ?, ?)";
+		String query = " insert into payments (`PaymentID`,`PaymentDate`,`CustomerName`,`AccountNo`,`PaymentType`,`Amount`)"
+				+ " values (?, ?, ?, ?, ?, ?)";
 
 		PreparedStatement preparedStmt;
 		try {
