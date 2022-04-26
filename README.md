@@ -31,11 +31,14 @@ There are mainly 2 types of employees in the system. Admin, and finance manager.
 The finance manager will be added by the administrator of the system. Moreover, the administrator can add, delete, update and remove billing details. 
 Finance manager can add, delete, update and remove payment details from system.
 
-Member
+Members
+
 IT20160098-B.A.D.A.Sathsarani
 
 IT20143190-De Silva P.H.S.Y.
-IT20142582-B.G.M.S Thilakawardhana 
+
+IT20142582-B.G.M.S Thilakawardhana
+
 IT20154394-U.G.H.T.Kumara
 
 
